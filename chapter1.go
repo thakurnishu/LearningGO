@@ -2,16 +2,16 @@ package main
 
 import "fmt"
 
-var (
-	x    int
-	y        = 20
-	z    int = 123
-	d, e     = 10, "hi"
-	f, g string
-)
+// var (
+// 	x    int
+// 	y        = 20
+// 	z    int = 123
+// 	d, e     = 10, "hi"
+// 	f, g string
+// )
 
-// unUsed variable
-const thisConstant int = 134
+// // unUsed variable
+// const thisConstant int = 134
 
 func Chapter1() {
 	// DATA TYPES

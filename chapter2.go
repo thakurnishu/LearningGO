@@ -396,6 +396,154 @@ func structs() {
 	/*
 		STRUCTS
 
-		-
+		- when you have realted data than you want to group together, use struct{}
 	*/
+
+	type person struct {
+		name string
+		age  int
+		pet  string
+	}
+
+	// Defining Variable
+
+	var fred person // All value inside struct get to their zero value like int -> 0 etc
+	fmt.Println(fred)
+
+	bob := person{}
+	fmt.Println(bob)
+
+	/*
+		- declaring with comma-separated list
+		- values should be assigned in correct order
+	*/
+	viku := person{
+		"Vikrant",
+		40,
+		"Dog",
+	}
+	fmt.Println(viku)
+
+	/*
+		- Declaring with map literal style
+		- No need to declare it in specific order
+		- Useful as if your initial struct have new value add to it
+			code will not get compromised
+	*/
+	nishu := person{
+		age:  30,
+		name: "Nishant",
+	}
+	fmt.Println(nishu)
+
+	// to access field of struct
+	nishu.name = "Nishant Singh"
+	fmt.Println(nishu)
+
+	/*
+		Anonymous Structs
+
+		- these struct are associated with single instance
+		- These Struct have two common use cases:
+			- Translating external data into Struct and visa versa (Marshaling and UnMarshaling)
+			- Writing tests
+	*/
+
+	// 1
+	var car struct {
+		company string
+		model   string
+		year    uint
+	}
+
+	car.company = "Maruti"
+	car.model = "Auto K10"
+	car.year = 2015
+	fmt.Println(car)
+
+	// 2
+	pet := struct {
+		name string
+		kind string
+	}{
+		name: "Fido",
+		kind: "dog",
+	}
+	fmt.Println(pet)
+
+	/*
+		Comparing and Converting Structs
+
+		- Structs that are composed of comparable types are comparable
+		- Structs that are composed of Slices, Maps, function and channel are not comparable
+	*/
+
+	type firstPerson struct {
+		name string
+		age  int
+	}
+	myfirstPerson := firstPerson{
+		name: "Nishu",
+		age:  20,
+	}
+	fmt.Println(myfirstPerson)
+
+	/*
+		- As you can see we can have type conversion between myfirstPerson and mysecondPerson
+		- But we can not compare these two instances as they are different types
+	*/
+	type secondPerson struct {
+		name string
+		age  int
+	}
+	mysecondPerson := secondPerson(myfirstPerson)
+	fmt.Println(mysecondPerson)
+
+	/*
+		- We cannot have type conversion from myfirstPerson to mythirdPerson
+		- As order of field is not same
+	*/
+	type thirdPerson struct {
+		age  int
+		name string
+	}
+
+	/*
+		- we cannot have type conversion from myfirstPerson to myfourthPerson
+		- As field names don't match
+	*/
+	type fourthPerson struct {
+		firstName string
+		age       int
+	}
+
+	/*
+		- we cannot have type conversion from myfirstPerson to myfifthPerson
+		- As additional field is in this struct
+	*/
+	type fifthPerson struct {
+		age         int
+		name        string
+		luckyNumber int
+	}
+
+	/*
+		- if you have two struct and one of them is Anonymous Struct then you
+			can compare other one with Anonymous struct without type conversion
+			if fields of both structs have same names, order, and types.
+	*/
+
+	f := firstPerson{
+		name: "Nishu",
+		age:  20,
+	}
+
+	var g struct {
+		name string
+		age  int
+	}
+
+	g = f
+	fmt.Println(f == g)
+
 }

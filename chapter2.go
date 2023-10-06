@@ -5,6 +5,9 @@ import (
 )
 
 func Chapter2() {
+
+	fmt.Println("Chapter 2")
+
 	/* COMPOSTE TYPES */
 	array()
 	slice()

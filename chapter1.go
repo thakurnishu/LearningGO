@@ -14,6 +14,9 @@ import "fmt"
 // const thisConstant int = 134
 
 func Chapter1() {
+
+	fmt.Println("Chapter 1")
+
 	// DATA TYPES
 
 	var flag bool // no value assigned, set to false
